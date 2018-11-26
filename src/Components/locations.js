@@ -22,15 +22,15 @@ class Locations extends Component {
                 return !loc.name.includes('A5C') && !loc.name.includes('Q5');
             });
             this.setState({ 
-                locations: locations,
+                locations,
                 filtered: locations
             });
         })
     }
 
     changeHandler(params) {
-        // do stuff with params
-        if (params.length === 0) {
+        // filter locations by search query
+        if (!params.length) {
             var filtered = this.state.locations;
         } else {
             var filtered = _.filter(this.state.locations, (loc) => {
@@ -48,17 +48,17 @@ class Locations extends Component {
                     <time className="f6 mb2 dib ttu tracked"><small>21 November, 2018</small></time>
                     <h3 className=" f3 f2-ns measure-narrow lh-title mv0">
                         <span className="bg-black-90 br2 lh-copy white pa1 ph2">
-                            Choose an Airport
+                           Let's Get You Some Wheels
                         </span>
                     </h3>
-                    <h4 className="f3 fw1 georgia i">Pick a valid airport shown in the list below.</h4>
+                    <h4 className="f3 fw1 georgia i">Pick a valid airport or station shown in the list below.</h4>
                     <h5 className="f6 ttu tracked black-80">By Nate Johnson</h5>
                 </div>
                 <Search onChange={ this.changeHandler.bind(this) }/>
             </header>
-            <div className = 'flex justify-center'>
+            <div className = 'flex justify-center mb5'>
                 <div className='w-90 flex flex-column'>
-                    <span className='self-start black-50 i f5 fw5 ma3'>Browse Airports</span>
+                    <span className='self-start black-50 i f5 fw5 ma3'>Browse Locations</span>
                     <div className='flex flex-wrap justify-between'>
                         { this.state.filtered.map( (loc) => {
                             return <LocationIndexItem key={ loc.id } data={ loc }/>;
@@ -67,7 +67,7 @@ class Locations extends Component {
                 </div>
             </div>
 
-            <div className='fixed bottom-0 footer flex justify-around w-100 items-center bg-light-gray'>
+            <div className='fixed bottom-0 footer flex justify-around w-100 items-center bg-light-gray '>
                 <div className='flex items-center'>
                     <i className="material-icons mr1">
                         add

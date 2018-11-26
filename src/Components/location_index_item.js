@@ -7,20 +7,14 @@ class LocationIndexItem extends React.Component {
         this.state = {
             location: props.data
         };
-        /* location {
-            airport_code: "IAD"
-            description: "Washington Dulles International Airport"
-            id: 63
-            multi_car_display_name: "Washington Dulles"
-            name: "Washington Dulles"
-        } */
     }
 
     airportLabel() {
-        if (this.state.location.airport_code) {
-            return <span>{this.state.location.name} ({this.state.location.airport_code})</span>
+        let { location } = this.state;
+        if (location.airport_code) {
+            return <span>{location.name} ({location.airport_code})</span>
         } else {
-            return <span>{this.state.location.name}</span>;
+            return <span>{location.name}</span>;
         }
     }
 
@@ -28,7 +22,7 @@ class LocationIndexItem extends React.Component {
         if (this.state.location.airport_code) {
             return <i className="material-icons">airplanemode_active</i>;
         } else {
-            return <i className="material-icons">business</i>
+            return <i className="material-icons">business</i>;
         }
     }
     
